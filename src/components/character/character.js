@@ -18,6 +18,6 @@ export default class Character {
     }
 
     getSpeed() {
-        this.speed = getRandomInt(50, 100);
+        this.speed = getRandomInt(600, 1000);
     }
 }

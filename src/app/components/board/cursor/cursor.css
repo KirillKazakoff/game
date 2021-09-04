@@ -1,0 +1,12 @@
+.cursor {
+    height: 40px;
+    width: 40px;     
+    pointer-events: none;
+    position: absolute;
+    background-image: url('./hammer-cursor.png');
+    background-size: cover;
+
+    box-sizing: border-box;
+    transition: 0, 1s;
+    transform: translate(-50%, -50%);
+}

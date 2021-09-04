@@ -1,7 +1,9 @@
 import './board.css';
-import engine from '../../lib/engine/engine';
+import engine from '../../../lib/engine/engine';
 import boardTemplate from './board.template';
 import characterTemplate from '../character/character.template';
+
+import Cursor from './cursor/cursor';
 
 export default {
     getContainer(container) {
@@ -17,8 +19,11 @@ export default {
     renderBoard(boardSize) {
         const html = engine(boardTemplate(boardSize));
         this.container.innerHTML = html;
+        this.board = this.container.querySelector('.board');
         this.boardSize = boardSize;
         this.getCells();
+
+        this.cursor = new Cursor(this.container);
     },
 
     renderChar(character) {
@@ -32,7 +37,7 @@ export default {
     getCells() {
         this.cells = this.container.querySelectorAll('.board__cell');
         this.cells.forEach(cell => {
-            const percentage = `${100 / this.boardSize}%`;
+            const percentage = `${100 / this.boardSize - 1}%`;
             cell.style['width'] = percentage;
             cell.style['padding-bottom'] = percentage;
         });
@@ -46,4 +51,5 @@ export default {
     clearBoard() {
         this.cells.forEach((cell) => cell.innerHTML = '');
     }
+
 }

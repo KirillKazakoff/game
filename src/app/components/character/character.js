@@ -1,6 +1,6 @@
 import './character.css';
 import board from '../board/board';
-import { getRandomInt } from '../../../lib/utils';
+import getRandomInt from '../../../lib/utils';
 
 export default class Character {
     constructor() {

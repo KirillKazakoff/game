@@ -12,9 +12,9 @@ export default class Cursor {
     }
 
     mouseMove(e) {
-        let x = e.clientX;
-        let y = e.clientY;
-        this.cursor.style.left = x + "px";
-        this.cursor.style.top = y + "px";
+        const x = e.clientX;
+        const y = e.clientY;
+        this.cursor.style.left = `${x}px`;
+        this.cursor.style.top = `${y}px`;
     }
 }

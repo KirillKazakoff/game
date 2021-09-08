@@ -1,6 +1,6 @@
 const cursorT = () => ({
     block: 'div',
-    cls: 'cursor',  
+    cls: 'cursor',
 });
 
 export default cursorT;

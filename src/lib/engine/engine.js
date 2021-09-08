@@ -1,3 +1,8 @@
+/* eslint-disable object-curly-newline */
+function generateHtml(block, cls, content, attrs) {
+    return `<${block} ${attrs} class="${cls}">${content}</${block}>`;
+}
+
 export default function engine(node) {
     if ((node === false) || (node === undefined) || (node === null)) {
         return '';
@@ -13,16 +18,16 @@ export default function engine(node) {
         node.forEach((b) => {
             const htmlElement = engine(b);
             fragment += htmlElement;
-        })
+        });
 
         return fragment;
     }
 
-    let { block, cls, content, attrs } = node;
+    const { block, cls, content, attrs } = node;
     let htmlAttrs = '';
 
     const element = document.createElement(block);
-    [].concat(cls).filter(Boolean).forEach((cls) => element.classList.add(cls));
+    [].concat(cls).filter(Boolean).forEach((clsin) => element.classList.add(clsin));
 
     if (attrs) {
         Object.entries(attrs).forEach(([key, value]) => {
@@ -33,8 +38,4 @@ export default function engine(node) {
     const htmlElement = generateHtml(block, cls, htmlContent, htmlAttrs);
 
     return htmlElement;
-}
-
-function generateHtml(block, cls, content, attrs) {
-    return `<${block} ${attrs} class="${cls}">${content}</${block}>`;
 }

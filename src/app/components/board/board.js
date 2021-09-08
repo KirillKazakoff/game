@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import './board.css';
 import engine from '../../../lib/engine/engine';
 import boardTemplate from './board.template';
@@ -6,12 +7,8 @@ import characterTemplate from '../character/character.template';
 import Cursor from './cursor/cursor';
 
 export default {
-    getContainer(container) {
-        if (typeof container === 'string') {
-            container = document.querySelector(container);
-        }
-
-        this.container = container;
+    getContainer() {
+        this.container = document.querySelector('.board-container');
         this.boardSize = null;
         this.cells = [];
     },
@@ -36,9 +33,9 @@ export default {
 
     getCells() {
         this.cells = this.container.querySelectorAll('.board__cell');
-        this.cells.forEach(cell => {
+        this.cells.forEach((cell) => {
             const percentage = `${100 / this.boardSize - 1}%`;
-            cell.style['width'] = percentage;
+            cell.style.width = percentage;
             cell.style['padding-bottom'] = percentage;
         });
         return this.cells;
@@ -49,7 +46,8 @@ export default {
     },
 
     clearBoard() {
-        this.cells.forEach((cell) => cell.innerHTML = '');
-    }
-
-}
+        this.cells.forEach((cell) => {
+            cell.innerHTML = '';
+        });
+    },
+};
